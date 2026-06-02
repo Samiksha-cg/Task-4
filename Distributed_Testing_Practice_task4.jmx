@@ -22,71 +22,6 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1 - Request" enabled="true">
-          <stringProp name="HTTPSampler.domain">altoro.testfire.net</stringProp>
-          <stringProp name="HTTPSampler.protocol">http</stringProp>
-          <stringProp name="HTTPSampler.path">/login.jsp</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
-            <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="script">Thread.sleep(500)</stringProp>
-            <stringProp name="scriptLanguage">groovy</stringProp>
-          </JSR223PreProcessor>
-          <hashTree/>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-            <collectionProp name="Asserion.test_strings">
-              <stringProp name="49586">200</stringProp>
-            </collectionProp>
-            <stringProp name="Assertion.custom_message"></stringProp>
-            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
-          </ResponseAssertion>
-          <hashTree/>
-          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Dynamic JSON Extractor - JSR223 PostProcessor" enabled="true">
-            <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="script">import org.jsoup.Jsoup
-
-// Get response body
-def response = prev.getResponseDataAsString()
-
-// Parse HTML
-def doc = Jsoup.parse(response)
-
-// Extract form action
-def formAction = doc.select(&quot;form&quot;).attr(&quot;action&quot;)
-
-// Extract username field id
-def usernameField = doc.select(&quot;input[type=text]&quot;).attr(&quot;id&quot;)
-
-// Extract password field id
-def passwordField = doc.select(&quot;input[type=password]&quot;).attr(&quot;id&quot;)
-
-// Store into JMeter variables
-vars.put(&quot;formAction&quot;, formAction)
-vars.put(&quot;usernameField&quot;, usernameField)
-vars.put(&quot;passwordField&quot;, passwordField)
-
-// Debug logs
-log.info(&quot;Form Action: &quot; + formAction)
-log.info(&quot;Username Field: &quot; + usernameField)
-log.info(&quot;Password Field: &quot; + passwordField)</stringProp>
-            <stringProp name="scriptLanguage">groovy</stringProp>
-          </JSR223PostProcessor>
-          <hashTree/>
-        </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2 - Request" enabled="true">
           <stringProp name="HTTPSampler.domain">altoro.testfire.net</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -134,7 +69,7 @@ log.info(&quot;Password Field: &quot; + passwordField)</stringProp>
           </doubleProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -253,6 +188,71 @@ log.info(&quot;Password Field: &quot; + passwordField)</stringProp>
           <boolProp name="exclude_checkbox_state">false</boolProp>
         </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
         <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1 - Request" enabled="true">
+          <stringProp name="HTTPSampler.domain">altoro.testfire.net</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.path">/login.jsp</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">Thread.sleep(500)</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Dynamic JSON Extractor - JSR223 PostProcessor" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.jsoup.Jsoup
+
+// Get response body
+def response = prev.getResponseDataAsString()
+
+// Parse HTML
+def doc = Jsoup.parse(response)
+
+// Extract form action
+def formAction = doc.select(&quot;form&quot;).attr(&quot;action&quot;)
+
+// Extract username field id
+def usernameField = doc.select(&quot;input[type=text]&quot;).attr(&quot;id&quot;)
+
+// Extract password field id
+def passwordField = doc.select(&quot;input[type=password]&quot;).attr(&quot;id&quot;)
+
+// Store into JMeter variables
+vars.put(&quot;formAction&quot;, formAction)
+vars.put(&quot;usernameField&quot;, usernameField)
+vars.put(&quot;passwordField&quot;, passwordField)
+
+// Debug logs
+log.info(&quot;Form Action: &quot; + formAction)
+log.info(&quot;Username Field: &quot; + usernameField)
+log.info(&quot;Password Field: &quot; + passwordField)</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
       </hashTree>
     </hashTree>
   </hashTree>
